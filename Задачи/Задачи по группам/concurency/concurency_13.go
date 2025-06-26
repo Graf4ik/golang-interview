@@ -1,4 +1,4 @@
-package main
+package concurency
 
 import (
 	"errors"

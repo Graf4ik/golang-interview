@@ -1,4 +1,4 @@
-package main
+package concurency
 
 import (
 	"context"
@@ -117,18 +117,18 @@ func main() {
 		}(url)
 	}
 
-// Вариант 1
-for i := 0; i < numRequests; i++ {
-	sem <- struct{}{}
-	go func() {
-		defer func() {
-			wg.Done()
-			<-sem
+	// Вариант 1
+	for i := 0; i < numRequests; i++ {
+		sem <- struct{}{}
+		go func() {
+			defer func() {
+				wg.Done()
+				<-sem
+			}()
+			networkRequest()
 		}()
-		networkRequest()
-	}()
-}
+	}
 
-wg.Wait()
+	wg.Wait()
 	fmt.Println(count)
 }

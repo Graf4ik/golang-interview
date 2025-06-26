@@ -34,19 +34,17 @@ func printNumber(ptrToNumber interface{}) {
 		return
 	}
 
-	/*
-	 Вариант 2
-	 switch v := ptrToNumber.(type) {
-	    case *int:
-	        if v != nil {
-	            fmt.Println(*v)
-	        } else {
-	            fmt.Println("nil")
-	        }
-	    default:
-	        fmt.Println("nil")
-	    }
-	*/
+	// Вариант 2
+	switch v := ptrToNumber.(type) {
+	case *int:
+		if v != nil {
+			fmt.Println(*v)
+		} else {
+			fmt.Println("nil")
+		}
+	default:
+		fmt.Println("nil")
+	}
 
 	fmt.Println(*ptr)
 }

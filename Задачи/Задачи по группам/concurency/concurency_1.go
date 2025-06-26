@@ -1,4 +1,4 @@
-package main
+package concurency
 
 import (
 	"fmt"
@@ -29,7 +29,7 @@ func main() {
 	}
 	go func() {
 		wg.Wait()
-		defer close(ch)  // Закрываем канал после завершения всех горутин
+		defer close(ch) // Закрываем канал после завершения всех горутин
 	}()
 
 	var sum int
